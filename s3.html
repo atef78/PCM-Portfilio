@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Control Manual - Atef Systems Portfolio</title>
+    <style>
+        @media print {
+            body {
+                margin: 0;
+            }
+
+            .page-break {
+                page-break-after: always;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+        }
+
+        .cover-page {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .cover-page h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cover-page .subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .cover-page .meta {
+            font-size: 18px;
+            margin-top: 60px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 32px;
+            margin: 30px 0 20px 0;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #764ba2;
+            font-size: 26px;
+            margin: 25px 0 15px 0;
+            border-left: 5px solid #764ba2;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #555;
+            font-size: 20px;
+            margin: 20px 0 10px 0;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        h4 {
+            color: #666;
+            font-size: 18px;
+            margin: 15px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul,
+        ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .toc h2 {
+            color: #667eea;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .toc-item {
+            padding: 8px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        .toc-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .stat-box .number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .label {
+            font-size: 18px;
+        }
+
+        .use-case {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .use-case-title {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px 5px 0 0;
+            margin: -20px -20px 15px -20px;
+            font-weight: bold;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .tech-item {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .tech-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .chart-container {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .chart-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .bar-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 250px;
+            margin: 20px 0;
+        }
+
+        .bar {
+            width: 80px;
+            background: linear-gradient(to top, #667eea, #764ba2);
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .bar-label {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .pie-chart {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 20px auto;
+            background: conic-gradient(#667eea 0deg 120deg,
+                    #764ba2 120deg 240deg,
+                    #48bb78 240deg 300deg,
+                    #ed8936 300deg 360deg);
+        }
+
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #667eea;
+        }
+
+        .process-number {
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+        }
+
+        .module-section {
+            background: #fafafa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .benefit-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .benefit-list li {
+            padding: 10px 10px 10px 40px;
+            margin-bottom: 10px;
+            background: #e8f5e9;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .benefit-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 15px;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        @media screen {
+            .page-break {
+                margin: 60px 0;
+                border-bottom: 2px dashed #ddd;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- COVER PAGE -->
+    <div class="cover-page">
+        <h1>PROCESS CONTROL MANUAL</h1>
+        <div class="subtitle">Atef Systems Portfolio</div>
+        <div style="font-size: 20px; margin: 40px 0;">
+            <div>📱 Mobile Applications | 🌐 Web Platforms | 🔧 Management Systems</div>
+        </div>
+        <div class="meta">
+            <p><strong>Document Version:</strong> 1.0</p>
+            <p><strong>Date:</strong> December 29, 2025</p>
+            <p><strong>Department:</strong> Information Technology</p>
+            <p><strong>Classification:</strong> Internal Use</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+        <h2>📑 TABLE OF CONTENTS</h2>
+
+        <div class="toc-item"><strong>1. Document Overview</strong>
+            ......................................................... 3</div>
+
+        <div class="toc-item"><strong>2. Property Management System (Alburj Properties)</strong> ................. 5
+        </div>
+        <div class="toc-item" style="padding-left: 20px;">2.1 Introduction & Scope
+            .................................................... 5</div>
+        <div class="toc-item" style="padding-left: 20px;">2.2 Features & Processes
+            .................................................. 6</div>
+        <div class="toc-item" style="padding-left: 20px;">2.3 System Modules
+            .......................................................... 8</div>
+        <div class="toc-item" style="padding-left: 20px;">2.4 Tools, Database & Deployment
+            ....................................... 12</div>
+
+        <div class="toc-item"><strong>3. Maintenance System (ASAS)</strong>
+            ........................................................ 14</div>
+        <div class="toc-item" style="padding-left: 20px;">3.1 Introduction & Scope
+            .................................................... 14</div>
+        <div class="toc-item" style="padding-left: 20px;">3.2 Roles, Workflow & Modules
+            .................................................. 16</div>
+        <div class="toc-item" style="padding-left: 20px;">3.3 Benefits, Technology & Reporting
+            .................................................... 21</div>
+
+        <div class="toc-item"><strong>4. CSR Training Application</strong>
+            ................................................. 23</div>
+        <div class="toc-item" style="padding-left: 20px;">4.1 Purpose & Scope
+            .................................................... 23</div>
+        <div class="toc-item" style="padding-left: 20px;">4.2 Roles, Workflow & Modules
+            .................................................. 25</div>
+        <div class="toc-item" style="padding-left: 20px;">4.3 Tools, Distribution & Reporting
+            .......................................................... 28</div>
+
+        <div class="toc-item"><strong>5. Dubai Happiness Meter</strong>
+            ............................................................. 29</div>
+        <div class="toc-item" style="padding-left: 20px;">5.1 Purpose & Scope
+            .................................................... 29</div>
+        <div class="toc-item" style="padding-left: 20px;">5.2 Workflow, Modules & Benefits
+            .................................................. 31</div>
+        <div class="toc-item" style="padding-left: 20px;">5.3 Technology & Reporting
+            ...................................................... 33</div>
+
+        <div class="toc-item"><strong>6. IT Desk Ticket Management System</strong> .............................................
+            34</div>
+        <div class="toc-item" style="padding-left: 20px;">6.1 Purpose & Scope
+            ................................................ 34</div>
+        <div class="toc-item" style="padding-left: 20px;">6.2 Roles, Workflow & Modules
+            ............................................... 35</div>
+        <div class="toc-item" style="padding-left: 20px;">6.3 Tools, Distribution & Reporting
+            .......................................................... 39</div>
+
+        <div class="toc-item"><strong>7. Foundr Executive Dashboard</strong> ...........................................
+            42</div>
+        <div class="toc-item"><strong>8. Dubai Hub Platform</strong>
+            ........................................................ 44</div>
+        <div class="toc-item"><strong>9. Appendices</strong>
+            ..................................................................... 46</div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- DOCUMENT OVERVIEW -->
+    <h1>1. DOCUMENT OVERVIEW</h1>
+
+    <h3>📋 Purpose</h3>
+    <p>This Process Control Manual serves as a comprehensive reference guide for all systems and applications
+        developed and maintained by the Atef. It provides detailed documentation of system functionalities,
+        processes, technologies, and operational procedures to ensure consistency, quality, and knowledge transfer
+        across the organization.</p>
+
+    <div class="info-box">
+        <strong>🎯 Key Objectives:</strong>
+        <ul>
+            <li>Standardize  system documentation across the organization</li>
+            <li>Facilitate knowledge transfer and onboarding</li>
+            <li>Ensure consistency in system operations and maintenance</li>
+            <li>Provide management with comprehensive system overview</li>
+            <li>Support audit and compliance requirements</li>
+        </ul>
+    </div>
+
+    <h3>👥 Target Audience</h3>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h4>Executive Leadership</h4>
+            <p>Strategic oversight and decision-making support</p>
+        </div>
+        <div class="feature-card">
+            <h4>DevOps Department</h4>
+            <p>Technical reference and operational procedures</p>
+        </div>
+        <div class="feature-card">
+            <h4>Department Heads</h4>
+            <p>Understanding system capabilities and integration</p>
+        </div>
+        <div class="feature-card">
+            <h4>New Team Members</h4>
+            <p>Onboarding and system familiarization</p>
+        </div>
+    </div>
+
+    <h3>📊 Systems Portfolio Overview</h3>
+
+    <!-- Charts can be toggled as needed; design preserved -->
+
+    <div class="success-box">
+        <strong>✅ Document Management</strong><br>
+        <strong>Owner:</strong> DevOps Department<br>
+        <strong>Review Cycle:</strong> Quarterly<br>
+        <strong>Distribution:</strong> Controlled Digital Copy<br>
+        <strong>Version Control:</strong> Managed through Atef - DevOps Department
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- PROPERTY MANAGEMENT SYSTEM -->
+    <h1>2. PROPERTY MANAGEMENT SYSTEM (ALBURJ PROPERTIES)</h1>
+
+    <h2>2.1 Introduction & Scope</h2>
+
+    <p><strong>Process Control Manual (PCM): Al-Burj Properties App – Mobile Application</strong></p>
+    <p>This PCM defines the standard processes, controls, and responsibilities for the development, deployment,
+        operation, and maintenance of the Al-Burj Properties mobile application. The platform is a private, internal
+        solution supporting property and facilities operations, enabling centralized management of properties, units,
+        tenants, leases, financial records, and related operational workflows.</p>
+
+    <div class="success-box">
+        <strong>Objectives:</strong>
+        <ul class="benefit-list">
+            <li>Ensure consistency in development and deployment</li>
+            <li>Maintain system stability and data integrity</li>
+            <li>Reduce dependency on individual developers</li>
+            <li>Provide clear operational and technical guidance for future maintenance</li>
+        </ul>
+    </div>
+
+    <h3>🎯 Features & Processes</h3>
+    <ul class="benefit-list">
+        <li>Property portfolio management with detailed attributes (location, area, amenities, ownership)</li>
+        <li>Unit and tenant management (sizes, layouts, occupancy, lease details, payment history)</li>
+        <li>Lease and contract management with rent escalation and renewal reminders</li>
+        <li>Rent collection, expense tracking, and financial reporting (income, expenses, portfolio health)</li>
+        <li>Tenant communication including maintenance requests and automated notifications</li>
+        <li>Compliance and documentation (legal, regulatory, insurance, permits)</li>
+        <li>Analytics and reporting (KPIs: occupancy rate, rental yield, arrears; customizable reports)</li>
+        <li>Visitor access via Gate Pass with security verification</li>
+    </ul>
+
+    <div class="info-box">
+        <strong>📱 Platform & Control</strong><br>
+        <strong>Version:</strong> 1.0<br>
+        <strong>Platform:</strong> Flutter (iOS & Android)<br>
+        <strong>Department:</strong> Properties & Facilities<br>
+        <strong>Prepared by:</strong> Mobile Development Team<br>
+        <strong>Distribution:</strong> Private internal iOS builds via Diawi
+    </div>
+
+    <h3>🌀 Application Lifecycle Process</h3>
+    <div class="use-case">
+        <div class="use-case-title">High-Level Process Flow</div>
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <strong>Requirement</strong>
+                <p>Request from Properties Department</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <strong>Development</strong>
+                <p>Enhancements by Mobile Team</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <strong>Testing</strong>
+                <p>Internal testing and validation</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <strong>Build</strong>
+                <p>Build generation</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">5</div>
+                <strong>Distribution</strong>
+                <p>Shared to authorized users</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">6</div>
+                <strong>Operation</strong>
+                <p>Operational use</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">7</div>
+                <strong>Maintenance</strong>
+                <p>Updates and improvements</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>2.3 System Modules</h2>
+
+    <div class="module-section">
+        <h3>🔐 Register & Login Module</h3>
+        <p><strong>Functionality:</strong> Owners can register or log in via the mobile application.</p>
+        <table>
+            <tr>
+                <th>Users Table Fields</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>ID, First Name, Last Name</td>
+                <td>Primary identity attributes</td>
+            </tr>
+            <tr>
+                <td>Email, Mobile</td>
+                <td>Contact information</td>
+            </tr>
+            <tr>
+                <td>Emirates ID</td>
+                <td>Verified identity record</td>
+            </tr>
+        </table>
+        <div class="warning-box">
+            <strong>🔒 Security:</strong> User data stored in MSSQL with appropriate access controls.
+        </div>
+    </div>
+
+    <div class="module-section">
+        <h3>🏢 Property Module</h3>
+        <p><strong>Functionality:</strong> Manage property profiles with add, update, delete operations. Accessible to
+            owners and managers only.</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Create</h4>
+                <p>Add new properties with full details</p>
+            </div>
+            <div class="feature-card">
+                <h4>Update</h4>
+                <p>Modify property attributes</p>
+            </div>
+            <div class="feature-card">
+                <h4>Delete</h4>
+                <p>Remove properties with authorization</p>
+            </div>
+            <div class="feature-card">
+                <h4>Review</h4>
+                <p>Portfolio analytics and health</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="module-section">
+        <h3>🏠 Unit Module</h3>
+        <p><strong>Functionality:</strong> Manage units within properties; define types, floor plans, and rental rates.</p>
+        <p><strong>Privileges:</strong> Admin can add, update, and delete units.</p>
+        <ul>
+            <li>Unit types: apartments, offices, shops, etc.</li>
+            <li>Attributes: size, layout, occupancy status</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>👥 Tenant Module</h3>
+        <p><strong>Functionality:</strong> Manage tenant profiles; register, approve, block tenants; maintain payment and lease history.</p>
+        <table>
+            <tr>
+                <th>Operation</th>
+                <th>Capability</th>
+            </tr>
+            <tr>
+                <td>Register</td>
+                <td>Create tenant profile with verified details</td>
+            </tr>
+            <tr>
+                <td>Approve/Block</td>
+                <td>Control access based on compliance</td>
+            </tr>
+            <tr>
+                <td>Update</td>
+                <td>Modify tenant records</td>
+            </tr>
+            <tr>
+                <td>Reporting</td>
+                <td>Payment and lease history</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="module-section">
+        <h3>📄 Lease and Sublease Module</h3>
+        <p><strong>Functionality:</strong> Manage lease agreements and subleases with automation.</p>
+        <div class="success-box">
+            <strong>Automations:</strong>
+            <ul>
+                <li>Lease creation and digital storage</li>
+                <li>Renewal reminders</li>
+                <li>Rent escalation tracking</li>
+                <li>Generate and share leases with tenants</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="module-section">
+        <h3>💰 Rent & Financial Module</h3>
+        <p><strong>Functionality:</strong> Rent collection records, expense tracking, budgeting, and reporting.</p>
+        <ul>
+            <li>Income statements</li>
+            <li>Expense summaries</li>
+            <li>Portfolio financial health</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📊 Reporting and Analytics Module</h3>
+        <p><strong>Functionality:</strong> Dashboards and reports for management; performance tracking and trend analysis.</p>
+        <ul>
+            <li>KPI tracking: occupancy rate, rental yield, arrears</li>
+            <li>Customizable reports for review</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🎫 Gate Pass Module</h3>
+        <p><strong>Functionality:</strong> Owners create visitor gate passes; visitors receive pass details; security verifies upon arrival.</p>
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <strong>Create</strong>
+                <p>Owner generates pass</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <strong>Notify</strong>
+                <p>Visitor receives details</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <strong>Verify</strong>
+                <p>Security checks pass</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>2.4 Tools, Database & Deployment</h2>
+
+    <div class="tech-stack">
+        <div class="tech-item">
+            <strong>📱 Mobile Application</strong>
+            Flutter / Dart<br>
+            iOS & Android
+        </div>
+        <div class="tech-item">
+            <strong>⚙️ Backend & APIs</strong>
+            ASP.NET Core<br>
+            RESTful APIs
+        </div>
+        <div class="tech-item">
+            <strong>💾 Database</strong>
+            MSSQL Server<br>
+            Centralized storage
+        </div>
+        <div class="tech-item">
+            <strong>🛠️ Dev Tools</strong>
+            Visual Studio<br>
+            VS Code
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>Database Management</strong><br>
+        <ul>
+            <li>Database Type: MSSQL</li>
+            <li>Hosting Server IP: 192.168.10.6</li>
+            <li>Centralized data storage for all modules</li>
+        </ul>
+    </div>
+
+    <h3>📦 Deployment & Build Control Process</h3>
+    <div class="info-box">
+        <strong>Distribution Model:</strong> Private internal distribution; iOS builds shared via Diawi<br><br>
+        <strong>Build & Update Procedure:</strong>
+        <ol>
+            <li>Run <code>flutter clean</code></li>
+            <li>Update application version number</li>
+            <li>Execute <code>flutter build ipa</code></li>
+            <li>Open archive via: Xcode → Build → iOS → Archive</li>
+            <li>Distribute and save the build locally</li>
+            <li>Upload IPA to <a href="https://www.diawi.com/">https://www.diawi.com/</a></li>
+            <li>Generate QR code</li>
+            <li>Share QR code with authorized users</li>
+        </ol>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- MAINTENANCE SYSTEM -->
+    <h1>3. MAINTENANCE SYSTEM (ASAS)</h1>
+
+    <h2>3.1 Introduction & Scope</h2>
+
+    <p><strong>Process Control Manual (PCM): ASAS Maintenance Management System – Mobile Application</strong></p>
+    <p>This PCM defines standardized processes, controls, and responsibilities for the development, operation,
+        deployment, and maintenance of the ASAS Maintenance Management System. The role-based solution manages
+        maintenance requests efficiently, ensuring transparency, accountability, and timely communication between
+        requesters and service providers. Each request is associated with a specific maintenance type, with controlled
+        access based on user roles and business units.</p>
+
+    <div class="success-box">
+        <strong>Objectives:</strong>
+        <ul class="benefit-list">
+            <li>Standardize maintenance request workflows</li>
+            <li>Ensure system reliability and operational consistency</li>
+            <li>Maintain clear accountability among stakeholders</li>
+            <li>Support scalability and continuous improvement</li>
+        </ul>
+    </div>
+
+    <h3>🏭 Applicability & Functional Scope</h3>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h4>Industries</h4>
+            <p>Manufacturing, Healthcare, Real Estate, IT Services, Facility Management</p>
+        </div>
+        <div class="feature-card">
+            <h4>Functional Scope</h4>
+            <p>Request management, provider responses, automated notifications, feedback, role-based control, reporting</p>
+        </div>
+    </div>
+
+    <h3>👤 User Roles & Access Control</h3>
+    <div class="module-section">
+        <table>
+            <tr>
+                <th>Role</th>
+                <th>Permissions</th>
+            </tr>
+            <tr>
+                <td><strong>Requester</strong></td>
+                <td>Create requests within authorized business units; review/approve/reject provider responses; provide feedback</td>
+            </tr>
+            <tr>
+                <td><strong>Provider</strong></td>
+                <td>Receive requests; submit resolutions and quotations; execute approved jobs; submit completion reports</td>
+            </tr>
+            <tr>
+                <td><strong>System Control</strong></td>
+                <td>All activities logged; access rights enforced at system level</td>
+            </tr>
+        </table>
+    </div>
+
+    <h3>🌀 End-to-End Workflow</h3>
+    <div class="use-case">
+        <div class="use-case-title">Maintenance Lifecycle</div>
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <strong>Submit</strong>
+                <p>Requester submits maintenance request</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <strong>Notify</strong>
+                <p>Assigned providers receive notification</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <strong>Respond</strong>
+                <p>Provider submits resolution/quotation</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <strong>Approve</strong>
+                <p>Requester approves or rejects</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">5</div>
+                <strong>Execute</strong>
+                <p>Technicians assigned and job executed</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">6</div>
+                <strong>Report</strong>
+                <p>Job completion report generated</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">7</div>
+                <strong>Feedback</strong>
+                <p>Requester submits feedback</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">8</div>
+                <strong>Analyze</strong>
+                <p>Reporting and performance evaluation</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>3.2 System Modules</h2>
+
+    <div class="module-section">
+        <h3>👤 User Management Module</h3>
+        <ul>
+            <li>Role-based access control</li>
+            <li>Business unit authorization for requesters</li>
+            <li>Secure management of requester and provider accounts</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📝 Request Management Module</h3>
+        <ul>
+            <li>Creation, update, and tracking of maintenance requests</li>
+            <li>Assignment of maintenance types to requests</li>
+            <li>Status tracking throughout the lifecycle</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>💬 Provider Response Management Module</h3>
+        <ul>
+            <li>Automated notifications to providers for new requests</li>
+            <li>Submission of maintenance resolutions and quotations</li>
+            <li>Response tracking and history</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>✅ Approval Workflow Module</h3>
+        <ul>
+            <li>Requesters approve or reject provider responses</li>
+            <li>Automatic notifications to providers</li>
+            <li>Controlled transition between stages</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🔧 Job Execution & Reporting Module</h3>
+        <ul>
+            <li>Technician assignment for approved jobs</li>
+            <li>Monitoring job progress</li>
+            <li>Generation and verification of completion reports</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🔔 Notification System Module</h3>
+        <ul>
+            <li>Real-time notifications for new requests</li>
+            <li>Approval/rejection updates</li>
+            <li>Job completion alerts</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>⭐ Feedback Management Module</h3>
+        <ul>
+            <li>Feedback collection from requesters post-completion</li>
+            <li>Stored for service quality evaluation</li>
+            <li>Supports continuous improvement</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📊 Reporting & Analytics Module</h3>
+        <ul>
+            <li>Comprehensive maintenance reports</li>
+            <li>Performance metrics: response time, completion efficiency, quality ratings</li>
+            <li>Data-driven insights for management</li>
+        </ul>
+    </div>
+
+    <h2>3.3 Benefits, Technology & Reporting</h2>
+
+    <div class="success-box">
+        <strong>Operational & Governance Benefits</strong>
+        <ul class="benefit-list">
+            <li>End-to-end automation reduces manual coordination</li>
+            <li>Real-time notifications ensure transparent communication</li>
+            <li>Role-based access control preserves data integrity</li>
+            <li>Structured approvals and clear audit trails</li>
+            <li>Feedback mechanisms support quality monitoring</li>
+        </ul>
+    </div>
+
+    <div class="tech-stack">
+        <div class="tech-item">
+            <strong>📱 Frontend</strong>
+            Flutter<br>
+            Android & iOS
+        </div>
+        <div class="tech-item">
+            <strong>⚙️ Backend</strong>
+            .NET Core<br>
+            ASP.NET Core
+        </div>
+        <div class="tech-item">
+            <strong>💾 Database</strong>
+            MSSQL<br>
+            Relational Storage
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>Maintenance & Change Control</strong>
+        <ul>
+            <li>Change requests initiated by business users</li>
+            <li>Enhancements/fixes implemented by development team</li>
+            <li>Controlled release cycles for updates</li>
+            <li>Continuous performance monitoring</li>
+        </ul>
+        <br>
+        <strong>Reporting & Accountability</strong>
+        <ul>
+            <li>All activities logged</li>
+            <li>Reports for job completion, provider performance, request trends</li>
+            <li>Used for evaluation and planning</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- CSR TRAINING APPLICATION -->
+    <h1>4. CSR TRAINING APPLICATION</h1>
+
+    <h2>4.1 Purpose & Scope</h2>
+
+    <p><strong>Process Control Manual (PCM): CSR Training System – Mobile Application</strong></p>
+    <p>This PCM defines standardized processes, controls, and responsibilities for the CSR Training Mobile Application,
+        ensuring consistency, reliability, and controlled management across its lifecycle. The application enables
+        trainers to organize live sessions, upload training videos, publish news and articles, and communicate with
+        trainees via chat and notifications. It supports Android and iOS platforms and serves as a centralized training platform.</p>
+
+    <div class="success-box">
+        <strong>Objectives:</strong>
+        <ul class="benefit-list">
+            <li>Enable live training sessions with attendance tracking</li>
+            <li>Provide access to training videos and educational content</li>
+            <li>Keep users informed through news and articles</li>
+            <li>Facilitate trainer–trainee communication</li>
+            <li>Support HR/CSR reporting and engagement tracking</li>
+        </ul>
+    </div>
+
+    <h2>4.2 Roles, Workflow & Modules</h2>
+
+    <div class="module-section">
+        <h3>👤 User Roles & Access Control</h3>
+        <table>
+            <tr>
+                <th>Role</th>
+                <th>Capabilities</th>
+            </tr>
+            <tr>
+                <td><strong>Trainer (Admin)</strong></td>
+                <td>Manage videos, schedule/host live sessions, post news/articles, chat with users, view attendance and engagement</td>
+            </tr>
+            <tr>
+                <td><strong>User (Trainee)</strong></td>
+                <td>Sign in via Staff ID; watch videos; attend live sessions; view news/articles; comment; chat with trainers</td>
+            </tr>
+            <tr>
+                <td><strong>Access Control</strong></td>
+                <td>Role-based access; authentication required prior to usage</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="use-case">
+        <div class="use-case-title">Training Workflow</div>
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <strong>Plan</strong>
+                <p>Trainer uploads content or schedules live session</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <strong>Notify</strong>
+                <p>Users receive notifications</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <strong>Access</strong>
+                <p>Users watch videos/articles or join live session</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <strong>Track</strong>
+                <p>Attendance recorded for live sessions</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">5</div>
+                <strong>Feedback</strong>
+                <p>Users provide comments/feedback</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">6</div>
+                <strong>Report</strong>
+                <p>HR/CSR reports generated</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="module-section">
+        <h3>🔐 User Registration & Authentication</h3>
+        <ul>
+            <li>Secure login using Staff ID</li>
+            <li>Role identification: Trainer or User</li>
+            <li>Controlled access</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📚 Content Management Module (CMS)</h3>
+        <ul>
+            <li>Trainers manage training videos, news posts, and articles</li>
+            <li>Users view content and comment</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🎞️ Video Library Module</h3>
+        <ul>
+            <li>Central repository with streaming support</li>
+            <li>User comments on videos</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🎥 Live Session Management</h3>
+        <ul>
+            <li>Schedule and host live sessions</li>
+            <li>Users view upcoming schedules and participate</li>
+            <li>Automatic session notifications</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📰 News & Articles Module</h3>
+        <ul>
+            <li>Trainers publish CSR/company news</li>
+            <li>Users view and comment</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>💬 Chat Module</h3>
+        <ul>
+            <li>Trainer–user one-to-one communication</li>
+            <li>Assistance and guidance; conversation history maintained</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📊 Attendance Tracking Module</h3>
+        <ul>
+            <li>Tracks session start/end time, trainer details, user join/leave times</li>
+            <li>Data used by HR for evaluation</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🔔 Notifications & Alerts Module</h3>
+        <ul>
+            <li>Push notifications for sessions, new content, announcements</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>⭐ Feedback & Assessment Module</h3>
+        <ul>
+            <li>Feedback on sessions and content</li>
+            <li>Optional assessments for learning outcomes</li>
+        </ul>
+    </div>
+
+    <h2>4.3 Tools, Distribution & Reporting</h2>
+
+    <div class="tech-stack">
+        <div class="tech-item">
+            <strong>📱 Frontend</strong>
+            Flutter<br>
+            Android & iOS
+        </div>
+        <div class="tech-item">
+            <strong>☁️ Backend</strong>
+            Firebase services<br>
+            Node.js (as applicable)
+        </div>
+        <div class="tech-item">
+            <strong>💾 Database</strong>
+            Firestore<br>
+            Profiles, content, sessions, attendance, feedback
+        </div>
+        <div class="tech-item">
+            <strong>📣 Notifications</strong>
+            Firebase Cloud Messaging (FCM)
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>Deployment & Distribution</strong>
+        <ul>
+            <li>Google Play Store & Apple App Store</li>
+            <li>Controlled release cycles for updates</li>
+            <li>Updates cover features, performance, bug fixes</li>
+        </ul>
+        <br>
+        <strong>Reporting & Accountability</strong>
+        <ul>
+            <li>Attendance reports for HR</li>
+            <li>Engagement metrics: participation, content views, interactions</li>
+            <li>Supports training effectiveness analysis</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- HAPPINESS METER -->
+    <h1>5. DUBAI HAPPINESS METER</h1>
+
+    <h2>5.1 Purpose & Scope</h2>
+
+    <p><strong>Process Control Manual (PCM): Dubai Happiness Meter – Mobile Application</strong></p>
+    <p>This PCM defines standardized processes, controls, and responsibilities for the development, deployment,
+        operation, and maintenance of the Dubai Happiness Meter. The app systematically collects, analyzes, and reports
+        customer feedback related to Dubai Hub services, staff performance, facilities, and overall satisfaction across
+        all service touchpoints.</p>
+
+    <div class="success-box">
+        <strong>Objectives:</strong>
+        <ul class="benefit-list">
+            <li>Accurately measure customer happiness</li>
+            <li>Identify service improvement opportunities</li>
+            <li>Support data-driven decision-making</li>
+            <li>Promote service excellence</li>
+            <li>Strengthen customer trust and engagement</li>
+        </ul>
+    </div>
+
+    <h2>5.2 Workflow, Modules & Benefits</h2>
+
+    <div class="use-case">
+        <div class="use-case-title">Feedback Lifecycle Process</div>
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <strong>Access</strong>
+                <p>Customer opens the Happiness Meter</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <strong>Select</strong>
+                <p>Choose feedback category</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <strong>Rate</strong>
+                <p>Smiley-based rating submitted</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <strong>Comment</strong>
+                <p>Optional comments & mobile number</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">5</div>
+                <strong>Store</strong>
+                <p>Feedback saved in Firestore</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">6</div>
+                <strong>Email</strong>
+                <p>Notification sent to management</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">7</div>
+                <strong>Review</strong>
+                <p>Management evaluates and acts</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="module-section">
+        <h3>😊 Customer Feedback Module</h3>
+        <ul>
+            <li>Service quality, staff performance, facility conditions, overall satisfaction</li>
+            <li>Smiley-based rating system</li>
+            <li>Open comments and optional mobile number</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📧 Feedback Email Notification Module</h3>
+        <ul>
+            <li>Automatic emails to management upon feedback submission</li>
+            <li>Ensures timely visibility and follow-up</li>
+        </ul>
+    </div>
+
+    <div class="success-box">
+        <strong>Benefits & Controls</strong>
+        <ul class="benefit-list">
+            <li>Improved service quality via direct feedback</li>
+            <li>Data-driven decisions using quantified trends</li>
+            <li>Enhanced customer satisfaction and engagement</li>
+            <li>Secure storage and transparent reporting</li>
+        </ul>
+    </div>
+
+    <h2>5.3 Technology & Reporting</h2>
+
+    <div class="tech-stack">
+        <div class="tech-item">
+            <strong>📱 Frontend</strong>
+            Flutter<br>
+            Android & iOS
+        </div>
+        <div class="tech-item">
+            <strong>☁️ Backend</strong>
+            Firebase<br>
+            Integrated services
+        </div>
+        <div class="tech-item">
+            <strong>💾 Database</strong>
+            Firestore<br>
+            Feedback records, ratings, comments, contact info
+        </div>
+        <div class="tech-item">
+            <strong>📧 Notifications</strong>
+            Automated email triggers<br>
+            Management alerts
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>Reporting & Accountability</strong>
+        <ul>
+            <li>Feedback emails to management</li>
+            <li>Aggregated data for service reviews, staff performance assessment, and facility planning</li>
+            <li>Supports organizational KPIs for customer happiness</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- TICKET MANAGEMENT SYSTEM -->
+    <h1>6. IT DESK – TICKET MANAGEMENT SYSTEM</h1>
+
+    <h2>6.1 Purpose & Scope</h2>
+
+    <p><strong>Process Control Manual (PCM): IT Desk – Ticket Management System (Mobile Application)</strong></p>
+    <p>This PCM defines standardized processes, controls, and responsibilities for the IT Desk Ticket Management System
+        designed to manage internal staff queries, IT issues, service requests, and operational tasks from initiation
+        through resolution and closure. The system supports both mobile users and administrative users via a web-based
+        admin panel.</p>
+
+    <div class="success-box">
+        <strong>Objectives:</strong>
+        <ul class="benefit-list">
+            <li>Ensure timely resolution of IT/service issues</li>
+            <li>Centralize all support requests</li>
+            <li>Improve staff satisfaction through efficient support</li>
+            <li>Provide transparency and accountability</li>
+            <li>Enable data-driven improvements via reporting and analytics</li>
+        </ul>
+    </div>
+
+    <h2>6.2 Roles, Workflow & Modules</h2>
+
+    <div class="module-section">
+        <h3>👤 User Roles & Access Control</h3>
+        <table>
+            <tr>
+                <th>Role</th>
+                <th>Capabilities</th>
+            </tr>
+            <tr>
+                <td><strong>Staff Users</strong></td>
+                <td>Create/submit tickets; view status; communicate with agents; receive notifications</td>
+            </tr>
+            <tr>
+                <td><strong>IT Support Agents</strong></td>
+                <td>Manage assigned tickets; update status; communicate; resolve and close tickets</td>
+            </tr>
+            <tr>
+                <td><strong>Administrators</strong></td>
+                <td>User/role management; configure categories/priorities; monitor performance; access reports</td>
+            </tr>
+            <tr>
+                <td><strong>Access Control</strong></td>
+                <td>Role-based permissions enforced across mobile and admin panel</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="use-case">
+        <div class="use-case-title">Ticket Lifecycle Process</div>
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <strong>Submit</strong>
+                <p>Staff submits ticket</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <strong>Categorize</strong>
+                <p>Ticket categorized and prioritized</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <strong>Assign</strong>
+                <p>Assigned to IT agent/team</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <strong>Work</strong>
+                <p>Agent investigates and updates</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">5</div>
+                <strong>Resolve</strong>
+                <p>Issue resolved</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">6</div>
+                <strong>Close</strong>
+                <p>Closed after confirmation</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">7</div>
+                <strong>Report</strong>
+                <p>Performance review and analytics</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="module-section">
+        <h3>🔐 Login & Registration Module</h3>
+        <ul>
+            <li>Secure authentication and role identification</li>
+            <li>Controlled system access</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📝 Ticket Creation & Submission Module</h3>
+        <ul>
+            <li>Submission via mobile app, email, web forms, API integrations</li>
+            <li>Details include description, category, priority, attachments</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🏷️ Ticket Categorization & Prioritization Module</h3>
+        <ul>
+            <li>Automatic categorization via predefined rules</li>
+            <li>Priority levels: Low, Medium, High, Urgent</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>👥 Ticket Assignment Module</h3>
+        <ul>
+            <li>Automatic or manual assignment</li>
+            <li>Agents can claim tickets; based on availability/expertise</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🔎 Ticket Tracking & Updates Module</h3>
+        <ul>
+            <li>Status tracking: Open, In Progress, Resolved, Closed</li>
+            <li>Real-time updates and complete activity logs</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🛠️ Ticket Resolution Module</h3>
+        <ul>
+            <li>Agent resolves issues; communication for clarifications</li>
+            <li>Marked as resolved upon completion</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📚 Knowledge Base Module</h3>
+        <ul>
+            <li>FAQs, Troubleshooting guides, Standard solutions</li>
+            <li>Self-service support reducing ticket volume</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>📈 Reporting & Analytics Module</h3>
+        <ul>
+            <li>Reports: volume, resolution time, agent performance, staff satisfaction</li>
+            <li>Supports management decisions and optimization</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🔔 Notifications & Alerts Module</h3>
+        <ul>
+            <li>Automatic notifications for new tickets, status changes, deadlines</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>⏫ Escalation Management Module</h3>
+        <ul>
+            <li>Automatic escalation of overdue tickets</li>
+            <li>Notification to higher-level agents/managers</li>
+            <li>Ensures SLA compliance</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🔑 User Roles & Permissions Module</h3>
+        <ul>
+            <li>Admins, Support agents, Staff users</li>
+            <li>Secure and controlled operations</li>
+        </ul>
+    </div>
+
+    <h2>6.3 Tools, Distribution & Reporting</h2>
+
+    <div class="tech-stack">
+        <div class="tech-item">
+            <strong>📱 Mobile</strong>
+            Flutter / Dart<br>
+            iOS & Android
+        </div>
+        <div class="tech-item">
+            <strong>🌐 Admin Panel</strong>
+            Angular<br>
+            Secure Web UI
+        </div>
+        <div class="tech-item">
+            <strong>⚙️ Backend & DB</strong>
+            ASP.NET Core APIs<br>
+            MSSQL (Primary), Firebase (Notifications)
+        </div>
+        <div class="tech-item">
+            <strong>🛠️ Dev Tools</strong>
+            Visual Studio<br>
+            VS Code
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>Deployment & Maintenance</strong>
+        <ul>
+            <li>Mobile app distributed internally via approved channels</li>
+            <li>Admin panel hosted on secure internal servers</li>
+            <li>Controlled release cycles</li>
+            <li>IT department initiates change requests; development team implements updates</li>
+            <li>System monitored for performance, security, reliability</li>
+        </ul>
+        <br>
+        <strong>Reporting & Accountability</strong>
+        <ul>
+            <li>Ticket performance reports reviewed periodically</li>
+            <li>Management monitors resolution efficiency, agent workload, staff satisfaction</li>
+            <li>Data used for continuous improvement</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- FOUNDR EXECUTIVE DASHBOARD -->
+    <h1>7. FOUNDR EXECUTIVE DASHBOARD</h1>
+
+    <h2>7.1 Overview</h2>
+
+    <p><strong>Process Control Manual (PCM): Foundr Internal Mobile Application</strong></p>
+    <p>The Foundr app provides executive-level visibility across departments and service centers. It consolidates
+        operational, financial, and HR data into structured dashboards, enabling leadership to make data-driven strategic
+        decisions. Access is restricted to executives and management.</p>
+
+    <div class="stat-box">
+        <div class="number">Internal</div>
+        <div class="label">Executive Access</div>
+    </div>
+
+    <div class="module-section">
+        <h3>🧾 Document Control</h3>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>Application Name</td>
+                <td>Foundr Internal Mobile App</td>
+            </tr>
+            <tr>
+                <td>Platform</td>
+                <td>Mobile (Android & iOS)</td>
+            </tr>
+            <tr>
+                <td>Technology</td>
+                <td>Flutter</td>
+            </tr>
+            <tr>
+                <td>Backend Integration</td>
+                <td>Enterprise Backend Services</td>
+            </tr>
+            <tr>
+                <td>Target Users</td>
+                <td>Executives & Management</td>
+            </tr>
+            <tr>
+                <td>Purpose</td>
+                <td>Executive visibility and performance monitoring</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>7.2 Purpose & Scope</h2>
+
+    <div class="success-box">
+        <strong>Application Purpose</strong>
+        <ul class="benefit-list">
+            <li>Provide executive-level visibility across the organization</li>
+            <li>Consolidate transactional, operational, and HR data</li>
+            <li>Enable real-time and historical reporting</li>
+        </ul>
+        <br>
+        <strong>Scope</strong>
+        <ul class="benefit-list">
+            <li>Company-wide transaction monitoring</li>
+            <li>Operational performance tracking</li>
+            <li>HR KPI monitoring</li>
+            <li>Secure access for executive users</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🔐 User Roles & Access Control</h3>
+        <table>
+            <tr>
+                <th>Role</th>
+                <th>Access Level</th>
+            </tr>
+            <tr>
+                <td>Executives / Directors</td>
+                <td>Full dashboard access</td>
+            </tr>
+            <tr>
+                <td>Senior Management</td>
+                <td>Department-level dashboards</td>
+            </tr>
+            <tr>
+                <td>System Admin</td>
+                <td>Configuration and access control</td>
+            </tr>
+        </table>
+        <ul>
+            <li>Secure authentication; role-based data visibility</li>
+            <li>Read-only dashboards; restricted sensitive KPIs</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🧱 System Architecture Overview</h3>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Frontend</h4>
+                <p>Flutter mobile; cross-platform; UI optimized for executive reporting</p>
+            </div>
+            <div class="feature-card">
+                <h4>Backend Integration</h4>
+                <p>Secure API-based data consumption; real-time synchronization</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="module-section">
+        <h3>📊 Core Dashboards & Controlled Processes</h3>
+        <h4>Transactions Overview Dashboard</h4>
+        <ul>
+            <li>Display total transactions at department and company levels</li>
+            <li>Aggregation, validation of mappings, real-time and summaries</li>
+            <li>Read-only; data from validated backend systems; consistency checks</li>
+        </ul>
+        <h4>Operational Dashboard</h4>
+        <ul>
+            <li>Metrics: revenue, bonuses, service center performance</li>
+            <li>KPI calculation; comparisons; monthly/yearly summaries</li>
+            <li>Backend-controlled formulas; role-based visibility; audit logging</li>
+        </ul>
+        <h4>HR Dashboard</h4>
+        <ul>
+            <li>Compliance metrics, manager performance, workforce overview</li>
+            <li>Restricted executive access; data masking as required; secure APIs</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <strong>Reporting & Data Accuracy Controls</strong>
+        <ul>
+            <li>Data sourced from official backend systems</li>
+            <li>No manual data entry via mobile app</li>
+            <li>Backend validation for accuracy</li>
+            <li>Periodic reconciliation with source systems</li>
+        </ul>
+        <br>
+        <strong>Security & Data Protection</strong>
+        <ul>
+            <li>Secure API authentication; encrypted transmission</li>
+            <li>No sensitive data stored locally</li>
+            <li>Session timeout and access revocation controls</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- DUBAI HUB PLATFORM -->
+    <h1>8. DUBAI HUB PLATFORM</h1>
+
+    <h2>8.1 Overview</h2>
+
+    <p><strong>Process Control Manual (PCM): Dubai Hub Web Platform</strong></p>
+    <p>The Dubai Hub Web Platform delivers a modern, scalable, and secure digital experience aligned with Dubai Hub’s
+        transformation objectives. It enhances user engagement via improved UI, optimized performance, and unified
+        authentication, ensuring seamless backend integration.</p>
+
+    <div class="module-section">
+        <h3>🧾 Document Control</h3>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>Project Name</td>
+                <td>Dubai Hub Web Platform</td>
+            </tr>
+            <tr>
+                <td>Platform</td>
+                <td>Web Application</td>
+            </tr>
+            <tr>
+                <td>Frontend</td>
+                <td>Next.js</td>
+            </tr>
+            <tr>
+                <td>Backend</td>
+                <td>Ktor</td>
+            </tr>
+            <tr>
+                <td>Authentication</td>
+                <td>Single Sign-On (SSO)</td>
+            </tr>
+            <tr>
+                <td>Target Users</td>
+                <td>Internal & External Dubai Hub Users</td>
+            </tr>
+            <tr>
+                <td>Document Type</td>
+                <td>Process Control Manual</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>8.2 Purpose & Scope</h2>
+
+    <div class="success-box">
+        <strong>Purpose</strong>
+        <ul class="benefit-list">
+            <li>Deliver modern, scalable, secure digital experience</li>
+            <li>Unified authentication and seamless backend integration</li>
+        </ul>
+        <br>
+        <strong>Scope</strong>
+        <ul class="benefit-list">
+            <li>User-centric web interface with SSO</li>
+            <li>Ktor integration and high-performance frontend</li>
+            <li>Reliable real-time data exchange</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🏗️ Architecture Overview</h3>
+        <h4>Frontend Layer</h4>
+        <ul>
+            <li>Next.js with SSR and optimized client rendering</li>
+            <li>Modular component-based architecture</li>
+            <li>Performance-optimized routing and data handling</li>
+        </ul>
+        <h4>Backend Integration</h4>
+        <ul>
+            <li>Ktor backend with REST-based communication</li>
+            <li>Reliable, real-time synchronization of platform data</li>
+        </ul>
+        <h4>Authentication</h4>
+        <ul>
+            <li>Single Sign-On (SSO) for unified access</li>
+            <li>Centralized identity management</li>
+        </ul>
+    </div>
+
+    <div class="module-section">
+        <h3>🛡️ Core Functional Processes & Controls</h3>
+        <h4>UI & UX Management</h4>
+        <ul>
+            <li>Modern, intuitive, responsive interface</li>
+            <li>UI standards; performance testing; UX validation</li>
+        </ul>
+        <h4>Frontend Development & Scalability</h4>
+        <ul>
+            <li>Next.js from scratch; scalable and maintainable</li>
+            <li>Modular components; code reviews; performance monitoring</li>
+        </ul>
+        <h4>Backend Communication & Data Flow</h4>
+        <ul>
+            <li>API contract validation; error handling; fallback mechanisms</li>
+            <li>Monitoring API response times</li>
+        </ul>
+        <h4>Authentication & Access Control (SSO)</h4>
+        <ul>
+            <li>Secure token-based auth; role-based access</li>
+            <li>Session management and timeout policies</li>
+        </ul>
+    </div>
+
+    <div class="info-box">
+        <strong>Security Controls</strong>
+        <ul>
+            <li>Secure SSO authentication</li>
+            <li>Encrypted data (HTTPS)</li>
+            <li>Centralized access control</li>
+            <li>Unauthorized access prevention</li>
+        </ul>
+        <br>
+        <strong>Performance & Reliability Controls</strong>
+        <ul>
+            <li>Optimized rendering via Next.js</li>
+            <li>Scalable frontend architecture</li>
+            <li>Stable backend integration</li>
+            <li>Continuous performance monitoring</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- APPENDICES -->
+    <h1>9. APPENDICES</h1>
+
+    <h2>9.1 Glossary</h2>
+
+    <table>
+        <tr>
+            <th>Term</th>
+            <th>Definition</th>
+        </tr>
+        <tr>
+            <td><strong>API</strong></td>
+            <td>Application Programming Interface - protocols for building software applications</td>
+        </tr>
+        <tr>
+            <td><strong>ASP.NET Core</strong></td>
+            <td>Cross-platform framework for building web applications</td>
+        </tr>
+        <tr>
+            <td><strong>Firebase</strong></td>
+            <td>Google's mobile and web application development platform</td>
+        </tr>
+        <tr>
+            <td><strong>Flutter</strong></td>
+            <td>Google's UI toolkit for cross-platform mobile development</td>
+        </tr>
+        <tr>
+            <td><strong>KPI</strong></td>
+            <td>Key Performance Indicator - measurable value demonstrating effectiveness</td>
+        </tr>
+        <tr>
+            <td><strong>MSSQL</strong></td>
+            <td>Microsoft SQL Server - relational database management system</td>
+        </tr>
+        <tr>
+            <td><strong>Next.js</strong></td>
+            <td>React framework for production-grade applications</td>
+        </tr>
+        <tr>
+            <td><strong>REST</strong></td>
+            <td>Representational State Transfer - architectural style for APIs</td>
+        </tr>
+        <tr>
+            <td><strong>SLA</strong></td>
+            <td>Service Level Agreement - commitment defining expected service standards</td>
+        </tr>
+        <tr>
+            <td><strong>SSO</strong></td>
+            <td>Single Sign-On - authentication scheme for multiple applications</td>
+        </tr>
+    </table>
+
+    <h2>9.2 Support Contacts</h2>
+
+    <div class="info-box">
+        <strong>📞 Atef Al-Madane - Main Contact</strong><br>
+        <strong>Email:</strong> atef.almadane@skynetcorp.ae<br>
+        <strong>Phone:</strong> +971-529039940<br>
+    </div>
+
+    <!-- <table>
+        <tr>
+            <th>System</th>
+            <th>Department</th>
+            <th>Contact Email</th>
+        </tr>
+        <tr>
+            <td><strong>Property Management</strong></td>
+            <td>Properties & Facilities</td>
+            <td>properties@company.com</td>
+        </tr>
+        <tr>
+            <td><strong>Maintenance System</strong></td>
+            <td>Facilities Management</td>
+            <td>maintenance@company.com</td>
+        </tr>
+        <tr>
+            <td><strong>CSR Training</strong></td>
+            <td>HR / Training</td>
+            <td>training@company.com</td>
+        </tr>
+        <tr>
+            <td><strong>Happiness Meter</strong></td>
+            <td>Customer Service</td>
+            <td>feedback@company.com</td>
+        </tr>
+        <tr>
+            <td><strong>Ticket Management</strong></td>
+            <td>IT Helpdesk</td>
+            <td>helpdesk@company.com</td>
+        </tr>
+        <tr>
+            <td><strong>Foundr Dashboard</strong></td>
+            <td>Executive Office</td>
+            <td>executive-it@company.com</td>
+        </tr>
+        <tr>
+            <td><strong>Dubai Hub Platform</strong></td>
+            <td>Digital Transformation</td>
+            <td>dubaihub-tech@company.com</td>
+        </tr>
+    </table>
+
+    <div class="warning-box">
+        <strong>🚨 Emergency IT Support</strong><br>
+        <strong>Hotline:</strong> +971-X-XXX-XXXX (24/7 for critical issues)<br>
+        <strong>Email:</strong> emergency-it@company.com
+    </div> -->
+
+    <h2>9.3 Change Log</h2>
+
+    <table>
+        <tr>
+            <th>Version</th>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Changes</th>
+        </tr>
+        <tr>
+            <td><strong>1.0</strong></td>
+            <td>Dec 29, 2025</td>
+            <td>DevOps Department</td>
+            <td>Initial release - Updated project details per PCM for Al-Burj, ASAS, CSR Training, Happiness Meter, IT Desk, Foundr, Dubai Hub Platform</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align: center; background: #f8f9fa;">Future updates will be recorded here</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <!-- DOCUMENT CONTROL -->
+    <!-- <h2>Document Control Information</h2>
+
+    <div class="module-section">
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td><strong>Document Owner</strong></td>
+                <td>IT Department</td>
+            </tr>
+            <tr>
+                <td><strong>Approval Authority</strong></td>
+                <td>CIO / IT Director</td>
+            </tr>
+            <tr>
+                <td><strong>Next Review Date</strong></td>
+                <td>March 31, 2026</td>
+            </tr>
+            <tr>
+                <td><strong>Distribution</strong></td>
+                <td>Management, IT Team, Department Heads</td>
+            </tr>
+            <tr>
+                <td><strong>Classification</strong></td>
+                <td>Internal Use Only</td>
+            </tr>
+            <tr>
+                <td><strong>Retention Period</strong></td>
+                <td>5 Years</td>
+            </tr>
+        </table>
+    </div> -->
+
+    <!-- <h2>Approval Signatures</h2> -->
+
+    <table>
+        <tr>
+            <th style="width: 25%;">Role</th>
+            <th style="width: 25%;">Name</th>
+            <!-- <th style="width: 25%;">Signature</th> -->
+            <th style="width: 25%;">Date</th>
+        </tr>
+        <tr>
+            <td><strong>Prepared By</strong></td>
+            <td>Atef Al-Madane</td>
+            <!-- <td>_____________________</td> -->
+            <td>29-12-2025</td>
+        </tr>
+        <!-- <tr>
+            <td><strong>Reviewed By</strong></td>
+            <td>IT Manager</td>
+            <td>_____________________</td>
+            <td>___________</td>
+        </tr>
+        <tr>
+            <td><strong>Approved By</strong></td>
+            <td>CIO / IT Director</td>
+            <td>_____________________</td>
+            <td>___________</td>
+        </tr> -->
+    </table>
+
+    <div
+        style="margin-top: 60px; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; text-align: center;">
+        <h2 style="color: white; border: none; margin: 0;">END OF DOCUMENT</h2>
+        <p style="margin-top: 20px; font-size: 16px;">For questions, clarifications, or updates to this
+            manual,<br>please contact the DevOps Department.</p>
+    </div>
+
+</body>
+</html>
