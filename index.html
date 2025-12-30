@@ -460,7 +460,8 @@
         <div class="toc-item" style="padding-left: 20px;">5.3 Technology & Reporting
             ...................................................... 33</div>
 
-        <div class="toc-item"><strong>6. IT Desk Ticket Management System</strong> .............................................
+        <div class="toc-item"><strong>6. IT Desk Ticket Management System</strong>
+            .............................................
             34</div>
         <div class="toc-item" style="padding-left: 20px;">6.1 Purpose & Scope
             ................................................ 34</div>
@@ -491,7 +492,7 @@
     <div class="info-box">
         <strong>🎯 Key Objectives:</strong>
         <ul>
-            <li>Standardize  system documentation across the organization</li>
+            <li>Standardize system documentation across the organization</li>
             <li>Facilitate knowledge transfer and onboarding</li>
             <li>Ensure consistency in system operations and maintenance</li>
             <li>Provide management with comprehensive system overview</li>
@@ -673,7 +674,8 @@
 
     <div class="module-section">
         <h3>🏠 Unit Module</h3>
-        <p><strong>Functionality:</strong> Manage units within properties; define types, floor plans, and rental rates.</p>
+        <p><strong>Functionality:</strong> Manage units within properties; define types, floor plans, and rental rates.
+        </p>
         <p><strong>Privileges:</strong> Admin can add, update, and delete units.</p>
         <ul>
             <li>Unit types: apartments, offices, shops, etc.</li>
@@ -683,7 +685,8 @@
 
     <div class="module-section">
         <h3>👥 Tenant Module</h3>
-        <p><strong>Functionality:</strong> Manage tenant profiles; register, approve, block tenants; maintain payment and lease history.</p>
+        <p><strong>Functionality:</strong> Manage tenant profiles; register, approve, block tenants; maintain payment
+            and lease history.</p>
         <table>
             <tr>
                 <th>Operation</th>
@@ -734,7 +737,8 @@
 
     <div class="module-section">
         <h3>📊 Reporting and Analytics Module</h3>
-        <p><strong>Functionality:</strong> Dashboards and reports for management; performance tracking and trend analysis.</p>
+        <p><strong>Functionality:</strong> Dashboards and reports for management; performance tracking and trend
+            analysis.</p>
         <ul>
             <li>KPI tracking: occupancy rate, rental yield, arrears</li>
             <li>Customizable reports for review</li>
@@ -743,7 +747,8 @@
 
     <div class="module-section">
         <h3>🎫 Gate Pass Module</h3>
-        <p><strong>Functionality:</strong> Owners create visitor gate passes; visitors receive pass details; security verifies upon arrival.</p>
+        <p><strong>Functionality:</strong> Owners create visitor gate passes; visitors receive pass details; security
+            verifies upon arrival.</p>
         <div class="process-flow">
             <div class="process-step">
                 <div class="process-number">1</div>
@@ -815,6 +820,455 @@
 
     <div class="page-break"></div>
 
+    <div class="module-section">
+        <h3>📸 Media Galleryss</h3>
+        <p>Property Management System Screenshots</p>
+
+        <div class="slider-container-2">
+            <button class="slider-btn-2 prev-btn-2" onclick="prevSlide2()">❮</button>
+            <div class="slider-wrapper-2" id="slider-wrapper-2"></div>
+            <button class="slider-btn-2 next-btn-2" onclick="nextSlide2()">❯</button>
+        </div>
+
+        <div class="slider-dots-2" id="slider-dots-2"></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox-2" class="lightbox-2" onclick="closeLightbox2()">
+        <span class="lightbox-close-2">&times;</span>
+        <img id="lightbox-img-2" src="" alt="Full size">
+    </div>
+
+    <style>
+        /* Slider Styles */
+        .slider-container-2 {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 40px 0;
+            background: #f5f5f5;
+            border-radius: 15px;
+        }
+
+        .slider-wrapper-2 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-item-2 {
+            position: absolute;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            background: white;
+        }
+
+        .slider-item-2 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Center Image - Bigger */
+        .slider-item-2.active {
+            width: 600px;
+            height: 400px;
+            z-index: 3;
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: brightness(1);
+        }
+
+        /* Left Image - Smaller */
+        .slider-item-2.prev {
+            width: 400px;
+            height: 300px;
+            z-index: 2;
+            opacity: 0.6;
+            transform: translateX(-450px) scale(0.85);
+            filter: brightness(0.7);
+        }
+
+        /* Right Image - Smaller */
+        .slider-item-2.next {
+            width: 400px;
+            height: 300px;
+            z-index: 2;
+            opacity: 0.6;
+            transform: translateX(450px) scale(0.85);
+            filter: brightness(0.7);
+        }
+
+        /* Hidden Images */
+        .slider-item-2.hidden {
+            opacity: 0;
+            transform: scale(0.5);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .slider-item-2.active:hover {
+            transform: translateX(0) scale(1.02);
+        }
+
+        .slider-item-2.prev:hover {
+            transform: translateX(-450px) scale(0.9);
+            opacity: 0.8;
+        }
+
+        .slider-item-2.next:hover {
+            transform: translateX(450px) scale(0.9);
+            opacity: 0.8;
+        }
+
+        /* Navigation Buttons */
+        .slider-btn-2 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-btn-2:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .prev-btn-2 {
+            left: 20px;
+        }
+
+        .next-btn-2 {
+            right: 20px;
+        }
+
+        /* Dots Navigation */
+        .slider-dots-2 {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot-2 {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot-2.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .dot-2:hover {
+            background: #667eea;
+        }
+
+        /* Caption */
+        .slider-item-2 .caption-2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 20px;
+            font-size: 16px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .slider-item-2.active .caption-2 {
+            opacity: 1;
+        }
+
+        /* Lightbox */
+        .lightbox-2 {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-2.active {
+            display: flex;
+        }
+
+        .lightbox-2 img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-close-2 {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .lightbox-close-2:hover {
+            transform: scale(1.2) rotate(90deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slider-item-2.active {
+                width: 500px;
+                height: 350px;
+            }
+
+            .slider-item-2.prev,
+            .slider-item-2.next {
+                width: 300px;
+                height: 250px;
+            }
+
+            .slider-item-2.prev {
+                transform: translateX(-350px) scale(0.8);
+            }
+
+            .slider-item-2.next {
+                transform: translateX(350px) scale(0.8);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slider-container-2 {
+                height: 400px;
+            }
+
+            .slider-item-2.active {
+                width: 400px;
+                height: 300px;
+            }
+
+            .slider-item-2.prev,
+            .slider-item-2.next {
+                width: 200px;
+                height: 180px;
+            }
+
+            .slider-item-2.prev {
+                transform: translateX(-250px) scale(0.75);
+            }
+
+            .slider-item-2.next {
+                transform: translateX(250px) scale(0.75);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-container-2 {
+                height: 300px;
+            }
+
+            .slider-item-2.active {
+                width: 300px;
+                height: 250px;
+            }
+
+            .slider-item-2.prev,
+            .slider-item-2.next {
+                display: none;
+            }
+        }
+    </style>
+
+    <script>
+        (function () {
+            let currentSlide = 0;
+            let totalSlides = 0;
+            const imageFolder = 'images/alburj_properties/';
+
+            // List your actual image filenames here
+            const images = [
+                'add_tenant.jpeg',
+                'add_unit.jpeg',
+                'admin.jpeg',
+                'contracts.jpeg',
+                'home.jpeg',
+                'intro.jpeg',
+                'login.jpeg',
+                'new_contract.jpeg',
+                'notice.jpeg',
+                'owners.jpeg',
+                'profile.jpeg',
+                'properties.jpeg',
+                'rent_report.jpeg',
+                'reports.jpeg',
+                'splash.jpeg',
+                'tenants.jpeg',
+                'units.jpeg', 'drawer.jpeg'
+            ];
+
+            function initSlider() {
+                const wrapper = document.getElementById('slider-wrapper-2');
+                const dotsContainer = document.getElementById('slider-dots-2');
+
+                if (!wrapper || !dotsContainer) {
+                    console.error('Slider elements not found');
+                    return;
+                }
+
+                if (images.length === 0) {
+                    wrapper.innerHTML = '<p style="text-align: center; color: #999; line-height: 500px;">No images configured</p>';
+                    return;
+                }
+
+                totalSlides = images.length;
+
+                // Create slider items
+                images.forEach((filename, index) => {
+                    const sliderItem = document.createElement('div');
+                    sliderItem.className = 'slider-item-2 hidden';
+
+                    const img = document.createElement('img');
+                    img.src = imageFolder + filename;
+                    img.alt = filename;
+                    img.onerror = function () {
+                        console.error('Failed to load:', filename);
+                        sliderItem.style.display = 'none';
+                    };
+                    img.onload = function () {
+                        console.log('Loaded:', filename);
+                    };
+
+                    const caption = document.createElement('div');
+                    caption.className = 'caption-2';
+                    caption.textContent = filename.replace(/\.[^/.]+$/, "").replace(/_/g, ' ');
+
+                    sliderItem.appendChild(img);
+                    sliderItem.appendChild(caption);
+
+                    sliderItem.onclick = function (e) {
+                        if (sliderItem.classList.contains('active')) {
+                            openLightbox2(imageFolder + filename);
+                        } else {
+                            goToSlide(index);
+                        }
+                    };
+
+                    wrapper.appendChild(sliderItem);
+
+                    // Create dot
+                    const dot = document.createElement('span');
+                    dot.className = 'dot-2';
+                    dot.onclick = () => goToSlide(index);
+                    dotsContainer.appendChild(dot);
+                });
+
+                updateSlider();
+            }
+
+            function updateSlider() {
+                const items = document.querySelectorAll('.slider-item-2');
+                const dots = document.querySelectorAll('.dot-2');
+
+                items.forEach((item, index) => {
+                    item.classList.remove('active', 'prev', 'next', 'hidden');
+
+                    if (index === currentSlide) {
+                        item.classList.add('active');
+                    } else if (index === (currentSlide - 1 + totalSlides) % totalSlides) {
+                        item.classList.add('prev');
+                    } else if (index === (currentSlide + 1) % totalSlides) {
+                        item.classList.add('next');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            window.nextSlide2 = function () {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            }
+
+            window.prevSlide2 = function () {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateSlider();
+            }
+
+            window.openLightbox2 = function (imageSrc) {
+                const lightbox = document.getElementById('lightbox-2');
+                const lightboxImg = document.getElementById('lightbox-img-2');
+                if (lightbox && lightboxImg) {
+                    lightboxImg.src = imageSrc;
+                    lightbox.classList.add('active');
+                }
+            }
+
+            window.closeLightbox2 = function () {
+                const lightbox = document.getElementById('lightbox-2');
+                if (lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') window.prevSlide2();
+                if (e.key === 'ArrowRight') window.nextSlide2();
+            });
+
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initSlider);
+            } else {
+                initSlider();
+            }
+        })();
+    </script>
+
+    <div class="page-break"></div>
+
     <!-- MAINTENANCE SYSTEM -->
     <h1>3. MAINTENANCE SYSTEM (ASAS)</h1>
 
@@ -845,7 +1299,8 @@
         </div>
         <div class="feature-card">
             <h4>Functional Scope</h4>
-            <p>Request management, provider responses, automated notifications, feedback, role-based control, reporting</p>
+            <p>Request management, provider responses, automated notifications, feedback, role-based control, reporting
+            </p>
         </div>
     </div>
 
@@ -858,11 +1313,13 @@
             </tr>
             <tr>
                 <td><strong>Requester</strong></td>
-                <td>Create requests within authorized business units; review/approve/reject provider responses; provide feedback</td>
+                <td>Create requests within authorized business units; review/approve/reject provider responses; provide
+                    feedback</td>
             </tr>
             <tr>
                 <td><strong>Provider</strong></td>
-                <td>Receive requests; submit resolutions and quotations; execute approved jobs; submit completion reports</td>
+                <td>Receive requests; submit resolutions and quotations; execute approved jobs; submit completion
+                    reports</td>
             </tr>
             <tr>
                 <td><strong>System Control</strong></td>
@@ -1051,7 +1508,8 @@
     <p>This PCM defines standardized processes, controls, and responsibilities for the CSR Training Mobile Application,
         ensuring consistency, reliability, and controlled management across its lifecycle. The application enables
         trainers to organize live sessions, upload training videos, publish news and articles, and communicate with
-        trainees via chat and notifications. It supports Android and iOS platforms and serves as a centralized training platform.</p>
+        trainees via chat and notifications. It supports Android and iOS platforms and serves as a centralized training
+        platform.</p>
 
     <div class="success-box">
         <strong>Objectives:</strong>
@@ -1075,11 +1533,13 @@
             </tr>
             <tr>
                 <td><strong>Trainer (Admin)</strong></td>
-                <td>Manage videos, schedule/host live sessions, post news/articles, chat with users, view attendance and engagement</td>
+                <td>Manage videos, schedule/host live sessions, post news/articles, chat with users, view attendance and
+                    engagement</td>
             </tr>
             <tr>
                 <td><strong>User (Trainee)</strong></td>
-                <td>Sign in via Staff ID; watch videos; attend live sessions; view news/articles; comment; chat with trainers</td>
+                <td>Sign in via Staff ID; watch videos; attend live sessions; view news/articles; comment; chat with
+                    trainers</td>
             </tr>
             <tr>
                 <td><strong>Access Control</strong></td>
@@ -1598,7 +2058,8 @@
 
     <p><strong>Process Control Manual (PCM): Foundr Internal Mobile Application</strong></p>
     <p>The Foundr app provides executive-level visibility across departments and service centers. It consolidates
-        operational, financial, and HR data into structured dashboards, enabling leadership to make data-driven strategic
+        operational, financial, and HR data into structured dashboards, enabling leadership to make data-driven
+        strategic
         decisions. Access is restricted to executives and management.</p>
 
     <div class="stat-box">
@@ -1990,7 +2451,8 @@
             <td><strong>1.0</strong></td>
             <td>Dec 29, 2025</td>
             <td>DevOps Department</td>
-            <td>Initial release - Updated project details per PCM for Al-Burj, ASAS, CSR Training, Happiness Meter, IT Desk, Foundr, Dubai Hub Platform</td>
+            <td>Initial release - Updated project details per PCM for Al-Burj, ASAS, CSR Training, Happiness Meter, IT
+                Desk, Foundr, Dubai Hub Platform</td>
         </tr>
         <tr>
             <td colspan="4" style="text-align: center; background: #f8f9fa;">Future updates will be recorded here</td>
@@ -2072,4 +2534,5 @@
     </div>
 
 </body>
+
 </html>
