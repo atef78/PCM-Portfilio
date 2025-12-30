@@ -1498,6 +1498,361 @@
     </div>
 
     <div class="page-break"></div>
+    <div class="module-section">
+        <h3>📸 Media Gallery</h3>
+        <p>ASAS System Screenshots</p>
+
+        <div class="slider-container" id="slider-container-pms"></div>
+        <div class="slider-dots" id="slider-dots-pms"></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox-pms" onclick="closeLightbox('pms')">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img-pms" src="" alt="Full size">
+    </div>
+
+    <style>
+        /* ------------------ Slider Styles ------------------ */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 40px 0;
+            background: #f5f5f5;
+            border-radius: 15px;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-item {
+            position: absolute;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            background: white;
+        }
+
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .slider-item.active {
+            width: 600px;
+            height: 400px;
+            z-index: 3;
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            filter: brightness(1);
+        }
+
+        .slider-item.prev,
+        .slider-item.next {
+            width: 400px;
+            height: 300px;
+            z-index: 2;
+            opacity: 0.6;
+            filter: brightness(0.7);
+        }
+
+        .slider-item.prev {
+            transform: translateX(-450px) scale(0.85);
+        }
+
+        .slider-item.next {
+            transform: translateX(450px) scale(0.85);
+        }
+
+        .slider-item.hidden {
+            opacity: 0;
+            transform: scale(0.5);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .slider-item.active:hover {
+            transform: translateX(0) scale(1.02);
+        }
+
+        .slider-item.prev:hover {
+            transform: translateX(-450px) scale(0.9);
+            opacity: 0.8;
+        }
+
+        .slider-item.next:hover {
+            transform: translateX(450px) scale(0.9);
+            opacity: 0.8;
+        }
+
+        /* Navigation Buttons */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        /* Dots */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Caption */
+        .slider-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 20px;
+            font-size: 16px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .slider-item.active .caption {
+            opacity: 1;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width:1024px) {
+            .slider-item.active {
+                width: 500px;
+                height: 350px;
+            }
+
+            .slider-item.prev,
+            .slider-item.next {
+                width: 300px;
+                height: 250px;
+            }
+
+            .slider-item.prev {
+                transform: translateX(-350px) scale(0.8);
+            }
+
+            .slider-item.next {
+                transform: translateX(350px) scale(0.8);
+            }
+        }
+
+        @media (max-width:768px) {
+            .slider-container {
+                height: 400px;
+            }
+
+            .slider-item.active {
+                width: 400px;
+                height: 300px;
+            }
+
+            .slider-item.prev,
+            .slider-item.next {
+                width: 200px;
+                height: 180px;
+            }
+
+            .slider-item.prev {
+                transform: translateX(-250px) scale(0.75);
+            }
+
+            .slider-item.next {
+                transform: translateX(250px) scale(0.75);
+            }
+        }
+
+        @media (max-width:480px) {
+            .slider-container {
+                height: 300px;
+            }
+
+            .slider-item.active {
+                width: 300px;
+                height: 250px;
+            }
+
+            .slider-item.prev,
+            .slider-item.next {
+                display: none;
+            }
+        }
+    </style>
+
+    <script>
+        function createSlider(config) {
+            let { containerId, dotsId, lightboxId, imageFolder, images } = config;
+            let currentSlide = 0;
+            const container = document.getElementById(containerId);
+            const dotsContainer = document.getElementById(dotsId);
+            const lightbox = document.getElementById(lightboxId);
+            const lightboxImg = lightbox.querySelector('img');
+
+            if (!container || !dotsContainer) { console.error('Slider container not found'); return; }
+            if (images.length === 0) { container.innerHTML = '<p>No images configured</p>'; return; }
+
+            // Create slider items
+            images.forEach((filename, index) => {
+                const item = document.createElement('div');
+                item.className = 'slider-item hidden';
+                const img = document.createElement('img');
+                img.src = imageFolder + filename;
+                img.alt = filename;
+                img.onerror = () => { item.style.display = 'none'; };
+                const caption = document.createElement('div');
+                caption.className = 'caption';
+                caption.textContent = filename.replace(/\.[^/.]+$/, "").replace(/_/g, ' ');
+                item.appendChild(img); item.appendChild(caption);
+                item.onclick = () => {
+                    if (item.classList.contains('active')) openLightbox(lightbox, lightboxImg, imageFolder + filename);
+                    else goToSlide(index);
+                };
+                container.appendChild(item);
+
+                // Dots
+                const dot = document.createElement('span'); dot.className = 'dot';
+                dot.onclick = () => goToSlide(index);
+                dotsContainer.appendChild(dot);
+            });
+
+            function updateSlider() {
+                const items = container.querySelectorAll('.slider-item');
+                const dots = dotsContainer.querySelectorAll('.dot');
+                items.forEach((item, i) => {
+                    item.classList.remove('active', 'prev', 'next', 'hidden');
+                    if (i === currentSlide) item.classList.add('active');
+                    else if (i === (currentSlide - 1 + images.length) % images.length) item.classList.add('prev');
+                    else if (i === (currentSlide + 1) % images.length) item.classList.add('next');
+                    else item.classList.add('hidden');
+                });
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+            }
+
+            function goToSlide(index) { currentSlide = index; updateSlider(); }
+            function nextSlide() { currentSlide = (currentSlide + 1) % images.length; updateSlider(); }
+            function prevSlide() { currentSlide = (currentSlide - 1 + images.length) % images.length; updateSlider(); }
+            function openLightbox(lightbox, lightboxImg, src) { lightboxImg.src = src; lightbox.classList.add('active'); }
+            function closeLightbox() { lightbox.classList.remove('active'); }
+
+            container.insertAdjacentHTML('beforeend', `<button class="slider-btn prev-btn">&#10094;</button>`);
+            container.insertAdjacentHTML('beforeend', `<button class="slider-btn next-btn">&#10095;</button>`);
+            container.querySelector('.prev-btn').onclick = prevSlide;
+            container.querySelector('.next-btn').onclick = nextSlide;
+            lightbox.querySelector('.lightbox-close').onclick = closeLightbox;
+
+            // Keyboard
+            document.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+            });
+
+            updateSlider();
+        }
+
+        // Example usage:
+        createSlider({
+            containerId: 'slider-container-pms',
+            dotsId: 'slider-dots-pms',
+            lightboxId: 'lightbox-pms',
+            imageFolder: 'images/asas/',
+            images: [
+                'details.jpeg', 'home.jpeg', 'login.jpeg', 'notification_details.jpeg', 'notification.jpeg', 'setting.jpeg',
+                'splash.jpeg'
+            ]
+        });
+    </script>
+    <div class="page-break"></div>
 
     <!-- CSR TRAINING APPLICATION -->
     <h1>4. CSR TRAINING APPLICATION</h1>
