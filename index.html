@@ -2055,7 +2055,7 @@
     <div class="page-break"></div>
 
     <div class="module-section">
-        <h3>📸 Media Gallery 3</h3>
+        <h3>📸 Media Gallery CSR</h3>
         <p>Property Management System Screenshots</p>
 
         <div class="slider-container-3">
@@ -2660,6 +2660,263 @@
     </div>
 
     <div class="page-break"></div>
+
+    <div class="module-section">
+        <h3>📸 Media Gallery IT DESK</h3>
+        <p>Property Management System Screenshots</p>
+
+        <div class="slider-container-4">
+            <button class="slider-btn-4 prev-btn-4" onclick="prevSlide4()">❮</button>
+            <div class="slider-wrapper-4" id="slider-wrapper-4"></div>
+            <button class="slider-btn-4 next-btn-4" onclick="nextSlide4()">❯</button>
+        </div>
+
+        <div class="slider-dots-4" id="slider-dots-4"></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox-4" class="lightbox-4" onclick="closeLightbox4()">
+        <span class="lightbox-close-4">&times;</span>
+        <img id="lightbox-img-4" src="" alt="Full size">
+    </div>
+
+    <style>
+        .slider-container-4 {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 40px 0;
+            background: #f5f5f5;
+            border-radius: 15px;
+        }
+
+        .slider-wrapper-4 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-item-4 {
+            position: absolute;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+            background: #fff;
+        }
+
+        .slider-item-4 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .slider-item-4.active {
+            width: 600px;
+            height: 400px;
+            z-index: 3;
+        }
+
+        .slider-item-4.prev {
+            width: 400px;
+            height: 300px;
+            transform: translateX(-450px) scale(.85);
+            opacity: .6;
+        }
+
+        .slider-item-4.next {
+            width: 400px;
+            height: 300px;
+            transform: translateX(450px) scale(.85);
+            opacity: .6;
+        }
+
+        .slider-item-4.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .slider-btn-4 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            z-index: 10;
+        }
+
+        .prev-btn-4 {
+            left: 20px;
+        }
+
+        .next-btn-4 {
+            right: 20px;
+        }
+
+        .slider-dots-4 {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot-4 {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+        }
+
+        .dot-4.active {
+            width: 30px;
+            border-radius: 6px;
+            background: #667eea;
+        }
+
+        .caption-4 {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+            color: #fff;
+            text-align: center;
+            background: linear-gradient(to top, rgba(0, 0, 0, .8), transparent);
+        }
+
+        /* Lightbox */
+        .lightbox-4 {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-4.active {
+            display: flex;
+        }
+
+        .lightbox-4 img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-close-4 {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            font-size: 50px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        (function () {
+            let currentSlide4 = 0;
+            let totalSlides4 = 0;
+
+            const imageFolder4 = 'images/it_desk/';
+            const images4 = [
+                'addCategory_admin.png', 'addProblem_admin.png', 'category_admin.png', 'category_mobile.png',
+                'changePassword_mobile.png', 'Counters_admin.png', 'dashboard_admin.png', 'department_admin.png',
+                'forgotpassword_mobile.png', 'home_mobile.png', 'login_admin.png', 'login_mobile.png',
+                'myaccount_mobile.png', 'problemAndIssue_admin.png', 'problems_mobile.png', 'register_mobile.png',
+                'resetPassword_admin.png', 'splash_mobile.png', 'ticket_details_mobile.png', 'ticketCreate_mobile.png',
+                'ticketList_mobile.png', 'ticketSuccess_mobile.png', 'userLocation_mobile.png', 'users_admin.png'
+            ];
+
+            function initSlider4() {
+                const wrapper = document.getElementById('slider-wrapper-4');
+                const dots = document.getElementById('slider-dots-4');
+
+                totalSlides4 = images4.length;
+
+                images4.forEach((img, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'slider-item-4 hidden';
+
+                    item.innerHTML = `
+                    <img src="${imageFolder4 + img}">
+                    <div class="caption-4">${img.replace('.jpeg', '').replace(/_/g, ' ')}</div>
+                `;
+
+                    item.onclick = () =>
+                        item.classList.contains('active')
+                            ? openLightbox4(imageFolder4 + img)
+                            : goToSlide4(index);
+
+                    wrapper.appendChild(item);
+
+                    const dot = document.createElement('span');
+                    dot.className = 'dot-4';
+                    dot.onclick = () => goToSlide4(index);
+                    dots.appendChild(dot);
+                });
+
+                updateSlider4();
+            }
+
+            function updateSlider4() {
+                const items = document.querySelectorAll('.slider-item-4');
+                const dots = document.querySelectorAll('.dot-4');
+
+                items.forEach((item, i) => {
+                    item.className = 'slider-item-4';
+                    if (i === currentSlide4) item.classList.add('active');
+                    else if (i === (currentSlide4 - 1 + totalSlides4) % totalSlides4) item.classList.add('prev');
+                    else if (i === (currentSlide4 + 1) % totalSlides4) item.classList.add('next');
+                    else item.classList.add('hidden');
+                });
+
+                dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide4));
+            }
+
+            window.nextSlide4 = () => {
+                currentSlide4 = (currentSlide4 + 1) % totalSlides4;
+                updateSlider4();
+            };
+
+            window.prevSlide4 = () => {
+                currentSlide4 = (currentSlide4 - 1 + totalSlides4) % totalSlides4;
+                updateSlider4();
+            };
+
+            function goToSlide4(i) {
+                currentSlide4 = i;
+                updateSlider4();
+            }
+
+            window.openLightbox4 = src => {
+                document.getElementById('lightbox-img-4').src = src;
+                document.getElementById('lightbox-4').classList.add('active');
+            };
+
+            window.closeLightbox4 = () =>
+                document.getElementById('lightbox-4').classList.remove('active');
+
+            document.addEventListener('DOMContentLoaded', initSlider4);
+        })();
+    </script>
+
+
+
+    <div class="page-break"></div>
+
 
     <!-- FOUNDR EXECUTIVE DASHBOARD -->
     <h1>7. FOUNDR EXECUTIVE DASHBOARD</h1>
