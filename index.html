@@ -1216,7 +1216,7 @@
 
                     const caption = document.createElement('div');
                     caption.className = 'caption-2';
-                    caption.textContent = filename.replace(/\.[^/.]+$/, "").replace(/_/g, ' ');
+                    caption.textContent = filename.replace(/\.[^/.]+$/, "").replace(/_/g, ' ').toUpperCase();
 
                     sliderItem.appendChild(img);
                     sliderItem.appendChild(caption);
@@ -1835,7 +1835,7 @@
                 img.onerror = () => { item.style.display = 'none'; };
                 const caption = document.createElement('div');
                 caption.className = 'caption';
-                caption.textContent = filename.replace(/\.[^/.]+$/, "").replace(/_/g, ' ');
+                caption.textContent = filename.replace(/\.[^/.]+$/, "").replace(/_/g, ' ').toUpperCase();
                 item.appendChild(img); item.appendChild(caption);
                 item.onclick = () => {
                     if (item.classList.contains('active')) openLightbox(lightbox, lightboxImg, imageFolder + filename);
@@ -2099,7 +2099,7 @@
 
     <div class="module-section">
         <h3>📸 Media Gallery CSR</h3>
-        <p>Property Management System Screenshots</p>
+        <p>CSR System Screenshots</p>
 
         <div class="slider-container-3">
             <button class="slider-btn-3 prev-btn-3" onclick="prevSlide3()">❮</button>
@@ -2287,7 +2287,7 @@
 
                     item.innerHTML = `
                     <img src="${imageFolder3 + imgName}">
-                    <div class="caption-3">${imgName.replace('.jpeg', '').replace(/_/g, ' ')}</div>
+                    <div class="caption-3">${imgName.replace('.jpeg', '').replace(/_/g, ' ').toUpperCase()}</div>
                 `;
 
                     item.onclick = () =>
@@ -2706,7 +2706,7 @@
 
     <div class="module-section">
         <h3>📸 Media Gallery IT DESK</h3>
-        <p>Property Management System Screenshots</p>
+        <p>IT DESK System Screenshots</p>
 
         <div class="slider-container-4">
             <button class="slider-btn-4 prev-btn-4" onclick="prevSlide4()">❮</button>
@@ -2895,7 +2895,7 @@
 
                     item.innerHTML = `
                     <img src="${imageFolder4 + img}">
-                    <div class="caption-4">${img.replace('.jpeg', '').replace(/_/g, ' ')}</div>
+                    <div class="caption-4">${img.replace('.png', '').replace(/_/g, ' ').toUpperCase()}</div>
                 `;
 
                     item.onclick = () =>
